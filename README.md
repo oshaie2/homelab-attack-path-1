@@ -9,6 +9,7 @@ The objective was to chain multiple misconfigurations together to obtain Domain 
 ---
 
 ## Lab Environment
+Future versions of this lab will include WS02 and network segmentation to require pivoting and tunneling techniques such as Ligolo-ng.
 
 ### Infrastructure
 
@@ -16,6 +17,7 @@ The objective was to chain multiple misconfigurations together to obtain Domain 
 - WS01 - Windows 10 Workstation
 - Kali Linux Attacker Machine
 - Active Directory Certificate Services (ADCS)
+
 
 ### Domain
 
@@ -225,4 +227,13 @@ No single misconfiguration directly resulted in Domain Administrator access. Ins
 
 Future versions of this homelab will include additional hosts, segmented networks, pivoting, and multiple attack paths to better simulate enterprise environments.
 
+## Conclusion
+
+This homelab was built to simulate a realistic Active Directory compromise from an assumed-breach perspective. Rather than relying on a single vulnerability, the attack path required chaining together multiple weaknesses including Kerberoasting, ACL abuse, lateral movement, credential discovery, ADCS abuse, and DCSync.
+
+The most valuable lesson from this project was learning how seemingly minor misconfigurations can combine to create a complete domain compromise. Throughout the engagement, BloodHound was used to identify relationships between users, groups, workstations, and certificate templates, allowing each step of the attack path to be planned and executed methodically.
+
+This project also reinforced the importance of enumeration. Every stage of the attack depended on information gathered during the previous stage, mirroring the way real-world Active Directory assessments are performed.
+
+Future iterations of this homelab will expand the environment with additional users, workstations, segmented networks, and dedicated pivot hosts. The goal is to create more complex attack paths that require tunneling, pivoting, and multi-host lateral movement while continuing to improve operational speed, consistency, and decision-making during Active Directory engagements.
 
