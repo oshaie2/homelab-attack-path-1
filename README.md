@@ -100,17 +100,22 @@ Administrator
 
 ### 1. Initial Access
 
-SMB enumeration revealed a text file containing a password.
+this is a assume breach scenario
 
-Using password spraying and user enumeration, valid credentials were identified for the Helpdesk account.
 
-This provided the initial foothold into the domain.
 
 ---
 
 ### 2. BloodHound Enumeration
 
 BloodHound was used to identify privilege escalation opportunities.
+it is a kerberoast-user
+![kerberoast](kerberoast-user.png)
+
+            
+
+
+
 
 The Helpdesk account was a member of the IT Support group.
 
