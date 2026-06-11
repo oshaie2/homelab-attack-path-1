@@ -127,12 +127,14 @@ A temporary SPN was assigned to the account, allowing a Kerberos service ticket 
 This resulted in valid credentials for iadmin.
 
 ---
+![Genericwrite](genericwrite-iadmin.png)
 
 ### 4. Lateral Movement
 
 BloodHound revealed that iadmin had administrative privileges on WS01.
 
 Using PsExec, administrative access to WS01 was obtained.
+![psexec](psexec-ws01.png)
 
 After searching the workstation, additional credentials were discovered.
 
@@ -142,6 +144,7 @@ After searching the workstation, additional credentials were discovered.
 
 A text file containing credentials for the bbily account was located on the workstation.
 
+![credentials](bbily-creds.png)
 After changing the password, access to the account was obtained.
 
 ---
@@ -158,6 +161,7 @@ Enumeration revealed that the bbily account had control over a certificate templ
 
 The vulnerable certificate template was modified and used to request a certificate.
 
+![esc4](esc4-abuse.png)
 The certificate allowed authentication as ljames.
 
 Using Certipy, a TGT and NTLM hash were obtained for the account.
@@ -170,6 +174,7 @@ BloodHound revealed that ljames possessed:
 
 - GetChanges
 - GetChangesAll
+  ![dcsync](dcsync-rights.png)
 
 These permissions allowed DCSync.
 
@@ -184,6 +189,10 @@ The Domain Administrator hash was extracted.
 Pass-the-Hash authentication was then used to obtain full Domain Administrator access.
 
 This completed the attack path and resulted in total domain compromise.
+
+nxc winrm   192.168.130.11 -u Administrator   -p aad3b435b51404eeaad3b435b51404ee:58a478135a93ac3bf058a5ea0e8fdb71 
+WINRM       192.168.130.11  5985   DC01             [*] Windows Server 2022 Build 20348 (name:DC01) (domain:project.dhl.local) 
+WINRM       192.168.130.11  5985   DC01             [+] project.dhl.local\Administrator:aad3b435b51404eeaad3b435b51404ee:58a478135a93ac3bf058a5ea0e8fdb71 (Pwn3d!)
 
 ---
 
