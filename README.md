@@ -106,10 +106,9 @@ this is a assume breach scenario
 
 ---
 
-### 2. BloodHound Enumeration
+### 2. BloodHound Enumeration and kerberoast discovery
 
-BloodHound was used to identify privilege escalation opportunities.
-it is a kerberoast-user
+BloodHound was used to identify privilege escalation opportunities. During enumeration, a kerberoastable service account (svg_sql) was identified and selected as the next attack vector.
 ![kerberoast](kerberoast-user.png)
 
             
